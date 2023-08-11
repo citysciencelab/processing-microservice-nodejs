@@ -1,0 +1,22 @@
+{
+  "name": "insightmaker-server",
+  "version": "1.0.0",
+  "description": "A webserver component that can serve Insight Maker Models via an API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.2",
+    "nodemon": "^3.0.1",
+    "simulation": "^3.0.0",
+    "simulation-viz-console": "^1.0.3",
+    "socket.io-client": "^4.7.2",
+    "ws": "^8.13.0"
+  },
+  "type": "module"
+}
