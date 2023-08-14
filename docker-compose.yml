@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  processing-microservice-insightmaker:
+  insightmaker:
     build: . 
     networks:
       - proxy
