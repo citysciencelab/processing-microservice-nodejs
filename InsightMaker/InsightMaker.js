@@ -9,7 +9,7 @@ function byName(targetName) {
   }
 
 // Load the model
-const modelText = readFileSync('models/CCmCC.InsightMaker', 'utf8');
+const modelText = readFileSync('InsightMaker/models/CCmCC.InsightMaker', 'utf8');
 
 // Output parameters
 const outputParameters = [

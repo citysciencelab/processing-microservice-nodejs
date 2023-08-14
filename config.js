@@ -1,4 +1,4 @@
-export const URL = 'https://modelserver.cut.hcu-hamburg.de';
+export const URL = '192.168.192.1';
 
 
 export const PROCESS_METADATA = {

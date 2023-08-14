@@ -38,6 +38,8 @@ socket.on("execute", async (data) => {
     // Job ID
     const jobID = data["jobID"];
 
+    console.log("Job execution started (Job ID ", jobID, ")");
+
     // Input parameters
     let inputParameters = {};
 
@@ -59,7 +61,7 @@ socket.on("execute", async (data) => {
     }
 
     //console.log("simulation", data);
-    let results = await simulateResults(inputParameters, outputParameters, modelText);
+    let results = await simulateResults(inputParameters);
     
     const response = {
         "jobID": jobID,
@@ -69,6 +71,8 @@ socket.on("execute", async (data) => {
     }
 
     socket.emit("simulation_results", response);
+
+    console.log("Job execution finished (Job ID ", jobID, ")");
     }
 );
 
