@@ -8,8 +8,8 @@ This repository contains the code for a processing microservice in node.js. The 
 
 ## Configuration
 All of the necessary configuration is done in the [config.js](./config.js) file. There are two mandatory configurations:
-1. ```URL``` of the Urban Model Server
-2. ```PROCESS_METADATA``` that register the process in accordance with the [OGC API Processes](https://docs.ogc.org/is/18-062r2/18-062r2.html) standard with the Urban Model Server.
+1. ```URL``` of the Urban Model Server. ⚠️ Make sure that both the Urban Model Server and the Processing Microservice are part of the same Docker bridge network. The URL is supposed to point to this Network Gateway and the Port of the Urban Model Platform container. 
+2. ```PROCESS_METADATA``` that registers the process with the Urban Model Server in accordance with the [OGC API Processes](https://docs.ogc.org/is/18-062r2/18-062r2.html) standard. 
 
 ## Extensions
 Although one can use basically any algorithm to handle the input, do calculations and then return an output, there are multiple simulation packages written in node.js that one can leverage. Thus, multiple extensions come along with this processing microservice that one can use out of the box. The following extensions are currently available: 
