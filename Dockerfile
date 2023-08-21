@@ -14,6 +14,8 @@ COPY . .
 # Expose port 3000
 EXPOSE 3000
 
+ENV DEBUG=*
+
 # Run the app
 CMD [ "npm", "start" ]
 

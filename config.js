@@ -1,4 +1,4 @@
-export const URL = 'ws://CUT-Modelserver:8888';
+export const URL = 'http://192.168.192.1:8888';
 
 
 export const PROCESS_METADATA = {

@@ -4,7 +4,6 @@ import { PROCESS_METADATA, URL } from "./config.js";
 import { simulateResults } from "./InsightMaker/InsightMaker.js"; 
 
 
-
 // Connect to the server
 const socket = io(URL);
 
