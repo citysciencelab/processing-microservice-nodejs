@@ -22,7 +22,7 @@ export const PROCESS_METADATA = {
     'inputs': {
         'aquaponics': {
             'title': 'Local Urban Food Production - Aquaponics',
-            'description': 'The name of the person or entity that you wish to be echoed back as an output',
+            'description': 'Food is produced locally in Hamburg in containers. Minimum: 0, Maximum: 4',
             'schema': {
                 'type': 'number',
                 'minimum': 0,
@@ -34,7 +34,7 @@ export const PROCESS_METADATA = {
         },
         'emission_fees': {
             'title': 'Emission Fees - Social Urban Emission Trading System SUETS',
-            'description': 'The name of the person or entity that you wish to be echoed back as an output',
+            'description': 'Districts would collect fees from their citizens for the amount of CO2 that they consume through actions like fuel car driving, traveling by plane, eating things from far away. Minimum: 0, Maximum: 4',
             'schema': {
                 'type': 'number',
                 'minimum': 0,
@@ -46,11 +46,9 @@ export const PROCESS_METADATA = {
         },
         'auto_free_city': {
             'title': 'Auto Free City',
-            'description': 'The name of the person or entity that you wish to be echoed back as an output',
+            'description': 'The city of Hamburg is free of cars. Boolean',
             'schema': {
-                'type': 'number',
-                'minimum': 0,
-                'maximum': 4
+                'type': 'boolean'
             },
             'minOccurs': 1,
             'maxOccurs': 1,
@@ -58,7 +56,7 @@ export const PROCESS_METADATA = {
         },
         'amphibic_houses': {
             'title': 'Amphibic Houses',
-            'description': 'The name of the person or entity that you wish to be echoed back as an output',
+            'description': 'If the water level rises¸ they can move upwards and float. Minimum: 0, Maximum: 4',
             'schema': {
                 'type': 'number',
                 'minimum': 0,
@@ -70,7 +68,7 @@ export const PROCESS_METADATA = {
         },
         'green_roofs': {
             'title': 'Green Roofs',
-            'description': 'The name of the person or entity that you wish to be echoed back as an output',
+            'description': 'Green roofs are rooftops planted with vegetation. Intensive green roofs have thick layers of soil (6 to 12 inches or more) that can support a broad variety of plant or even tree species. Extensive roofs are simpler green roofs with a soil layer of 6 inches or less to support turf¸ grass¸ or other ground cover. Minimum: 0, Maximum: 4',
             'schema': {
                 'type': 'number',
                 'minimum': 0,
@@ -82,11 +80,9 @@ export const PROCESS_METADATA = {
         },
         'collectivization_of_production_goods': {
             'title': 'Collectivization of Production Goods',
-            'description': 'The name of the person or entity that you wish to be echoed back as an output',
+            'description': 'Ensuring that decision-making power over production processes is vested in the hands of workers and communities. This will enable a shift away from profit-driven, environmentally destructive practices towards sustainable and socially just modes of production. Boolean',
             'schema': {
-                'type': 'number',
-                'minimum': 0,
-                'maximum': 4
+                'type': 'boolean'
             },
             'minOccurs': 1,
             'maxOccurs': 1,
@@ -94,11 +90,9 @@ export const PROCESS_METADATA = {
         },
         'queer_feminist_ai': {
             'title': 'Queer-feminist AI',
-            'description': 'The name of the person or entity that you wish to be echoed back as an output',
+            'description': 'Center the voices and experiences of marginalized communities, including queer individuals, women, people of color, and indigenous communities. Boolean',
             'schema': {
-                'type': 'number',
-                'minimum': 0,
-                'maximum': 4
+                'type': 'boolean'
             },
             'minOccurs': 1,
             'maxOccurs': 1,
@@ -106,11 +100,9 @@ export const PROCESS_METADATA = {
         },
         'interspecies_ai': {
             'title': 'Interspecies AI',
-            'description': 'The name of the person or entity that you wish to be echoed back as an output',
+            'description': 'A transformative response to climate change requires recognizing and valuing the agency and worth of all species. We must move away from human-centric worldviews and acknowledge the interconnectedness of all beings. Boolean',
             'schema': {
-                'type': 'number',
-                'minimum': 0,
-                'maximum': 4
+                'type': 'boolean'
             },
             'minOccurs': 1,
             'maxOccurs': 1,
@@ -118,11 +110,11 @@ export const PROCESS_METADATA = {
         },
         'accountability_for_perpetuating_the_crisis': {
             'title': 'Accountability for perpetuating the crisis',
-            'description': 'The name of the person or entity that you wish to be echoed back as an output',
+            'description': 'Punish people, companies and parties who have a big responsibility for the climate crisis. Minimum: 0, Maximum: 2',
             'schema': {
                 'type': 'number',
                 'minimum': 0,
-                'maximum': 4
+                'maximum': 2
             },
             'minOccurs': 0,
             'maxOccurs': 1,
@@ -130,7 +122,7 @@ export const PROCESS_METADATA = {
         },
         'circular_economy': {
             'title': 'Circular Economy',
-            'description': 'The name of the person or entity that you wish to be echoed back as an output',
+            'description': 'Foster a shift towards a circular economy model where resources are used efficiently, waste is minimized, and materials are continuously recycled or repurposed. Encourage local production, repair and sharing initiatives, and reduce reliance on single-use products. Boolean',
             'schema': {
                 'type': 'boolean',
             },
@@ -140,11 +132,11 @@ export const PROCESS_METADATA = {
         },
         'public_awareness_and_education': {
             'title': 'Public awareness and Education',
-            'description': 'The name of the person or entity that you wish to be echoed back as an output',
+            'description': 'Invest in public awareness campaigns and education programs to foster a culture of sustainability. Promote environmental literacy, encourage behavior change towards sustainable practices, and engage citizens in decision-making processes to ensure their active participation in creating sustainable cities. Minimum: 0, Maximum: 2',
             'schema': {
                 'type': 'number',
                 'minimum': 0,
-                'maximum': 4
+                'maximum': 2
             },
             'minOccurs': 0,
             'maxOccurs': 1,
@@ -152,7 +144,7 @@ export const PROCESS_METADATA = {
         },
         'collaborative_governance': {
             'title': 'Collaborative Governance',
-            'description': 'The name of the person or entity that you wish to be echoed back as an output',
+            'description': 'Ensuring that decision-making power over production processes is vested in the hands of workers and communities. This will enable a shift away from profit-driven, environmentally destructive practices towards sustainable and socially just modes of production. Boolean',
             'schema': {
                 'type': 'boolean',
             },
