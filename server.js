@@ -16,13 +16,13 @@ const handleError = (error) => {
 
 // Handle socket events
 socket.on("connect", () => {
-    console.log("connected");
+    console.log("SocketIO connection established");
     socket.emit("register", PROCESS_METADATA);
     }
 );
 
 socket.on("disconnect", () => {
-    console.log("disconnected");
+    console.log("SocketIO connection closed");
     }
 );
 

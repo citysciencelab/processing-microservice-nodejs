@@ -20,4 +20,4 @@ Although one can use basically any algorithm to handle the input, do calculation
 
 
 ## Other Processing Microservices
-So far, the only avaiable micorservice is in node.js. There are plans to provide processing microservices in Python and Java for the future. 
+- [Python Processing Microservice](https://github.com/citysciencelab/processing-microservice-python/)
