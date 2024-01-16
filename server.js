@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 import { PROCESS_METADATA, URL } from "./config.js";
 
-import { simulateResults } from "./InsightMaker/InsightMaker.js"; 
+import { simulateResults } from "./InsightMaker/ProcessManager.js"; 
 
 
 // Connect to the server
