@@ -65,7 +65,7 @@ socket.on("execute", async (data) => {
     const response = {
         "jobID": jobID,
         "processID": PROCESS_METADATA["id"],
-        "results": results,
+        "results": {results},
         "mimetype": "application/json"
     }
 

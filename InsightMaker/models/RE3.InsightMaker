@@ -1,0 +1,1523 @@
+<InsightMakerModel>
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <Folder name="Wohnkosten" Note="" Type="None" Solver="{&quot;enabled&quot;:false,&quot;algorithm&quot;:&quot;RK1&quot;,&quot;timeStep&quot;:1}" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" AgentBase="" oldId="455" id="455">
+      <mxCell style="folder" parent="1" vertex="1">
+        <mxGeometry x="1810" y="100" width="940" height="750" as="geometry" />
+      </mxCell>
+    </Folder>
+    <Variable name="Wohnkosten" Note="" Equation="[Aktuelle kalte Betriebskosten]+[Aktuelle Nettokaltmiete]+[Aktuelle Heizkosten]\n" Units="Euro / (square meter * month)" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="190" id="190">
+      <mxCell style="variable;shape=ellipse;perimeter=ellipsePerimeter;fillColor=#B3E2CD;strokeColor=#000000;" parent="455" vertex="1">
+        <mxGeometry x="584" y="430" width="150" height="120" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="195" id="195">
+      <mxCell style="link" parent="455" source="345" target="190" edge="1">
+        <mxGeometry x="-576" y="10" width="100" height="100" as="geometry">
+          <mxPoint x="-576" y="110" as="sourcePoint" />
+          <mxPoint x="-476" y="10" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Nettokaltmiete 2021" Note="https://www.mieterverein-hamburg.de/de/aktuelles/statistiken-wohnen-hamburg/index.html" Equation="9.29" Units="Euro / (square meter * month)" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="223" id="223">
+      <mxCell style="variable" parent="455" vertex="1">
+        <mxGeometry x="584" y="145" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="Kalte Betriebskosten 2021" Note="https://www.mieterverein-hamburg.de/de/aktuelles/pressemitteilungen/pressemitteilung/page-00006/index.html" Equation="2.04" Units="Euro / (square meter * month)" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="248" id="248">
+      <mxCell style="variable" parent="455" vertex="1">
+        <mxGeometry x="280" y="340" width="130" height="90" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="249" id="249">
+      <mxCell style="link" parent="455" source="248" target="345" edge="1">
+        <mxGeometry x="-986" y="40" width="100" height="100" as="geometry">
+          <mxPoint x="-986" y="140" as="sourcePoint" />
+          <mxPoint x="379" y="450" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Stock name="Aktuelle Nettokaltmiete" Note="" InitialValue="[Nettokaltmiete 2021]" StockMode="Store" Delay="10" Volume="100" NonNegative="false" Units="Euro / (square meter * month)" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="339" id="339">
+      <mxCell style="stock" parent="455" vertex="1">
+        <mxGeometry x="574" y="270" width="150" height="60" as="geometry" />
+      </mxCell>
+    </Stock>
+    <Link name="Link" Note="" BiDirectional="false" oldId="340" id="340">
+      <mxCell style="link" parent="455" source="223" target="339" edge="1">
+        <mxGeometry x="-980" y="-190" width="100" height="100" as="geometry">
+          <mxPoint x="-980" y="-90" as="sourcePoint" />
+          <mxPoint x="-880" y="-190" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Flow name="Erhöhungen Nettokaltmiete" Note="" FlowRate="[Aktuelle Nettokaltmiete]*[Inflationsrate]/100+[Modernisierungsmieterhöhung nach aktueller Gesetzeslage]" OnlyPositive="true" TimeIndependent="false" Units="Euro / (square meter * month * month)" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" oldId="342" id="342">
+      <mxCell style="flow" parent="455" target="339" edge="1">
+        <mxGeometry x="-980" y="-190" width="100" height="100" as="geometry">
+          <mxPoint x="310" y="300" as="sourcePoint" />
+          <mxPoint x="-980" y="-90" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Flow>
+    <Link name="Link" Note="" BiDirectional="false" oldId="343" id="343">
+      <mxCell style="link" parent="455" source="339" target="190" edge="1">
+        <mxGeometry x="-980" y="-190" width="100" height="100" as="geometry">
+          <mxPoint x="-980" y="-90" as="sourcePoint" />
+          <mxPoint x="-880" y="-190" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Stock name="Aktuelle kalte Betriebskosten" Note="" InitialValue="[Kalte Betriebskosten 2021]" StockMode="Store" Delay="10" Volume="100" NonNegative="false" Units="Euro / (square meter * month)" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="345" id="345">
+      <mxCell style="stock" parent="455" vertex="1">
+        <mxGeometry x="270" y="460" width="150" height="60" as="geometry" />
+      </mxCell>
+    </Stock>
+    <Flow name="Erhöhungen kalte Betriebskosten" Note="" FlowRate="[Aktuelle kalte Betriebskosten]*[Inflationsrate]/100" OnlyPositive="true" TimeIndependent="false" Units="Euro / (square meter * month * month)" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" oldId="346" id="346">
+      <mxCell style="flow" parent="455" target="345" edge="1">
+        <mxGeometry x="-980" y="-190" width="100" height="100" as="geometry">
+          <mxPoint x="50" y="490" as="sourcePoint" />
+          <mxPoint x="-980" y="-90" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Flow>
+    <Variable name="Aktuelle Heizkosten" Note="" Equation="[Aktueller Heizenergiebedarf]*[Energiekosten]" Units="Euro / (square meter * month)" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="358" id="358">
+      <mxCell style="variable" parent="455" vertex="1">
+        <mxGeometry x="599" y="660" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="361" id="361">
+      <mxCell style="link" parent="455" source="358" target="190" edge="1">
+        <mxGeometry x="-980" y="-190" width="100" height="100" as="geometry">
+          <mxPoint x="-980" y="-90" as="sourcePoint" />
+          <mxPoint x="-880" y="-190" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="660" y="620" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Inflationsrate" Note="[%]&lt;br&gt;" Equation="-1.4" Units="1 / year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="true" SliderMax="15" SliderMin="-5" SliderStep="0.1" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="483" id="483">
+      <mxCell style="variable" parent="455" vertex="1">
+        <mxGeometry x="360" y="195" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="484" id="484">
+      <mxCell style="link" parent="455" source="483" target="342" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Ghost Source="483" oldId="485" name="Inflationsrate" id="485">
+      <mxCell style="variable;opacity=30;" parent="455" vertex="1">
+        <mxGeometry x="30" y="370" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Ghost>
+    <Link name="Link" Note="" BiDirectional="false" oldId="486" id="486">
+      <mxCell style="link" parent="455" source="485" target="346" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Display name="Wohnkosten" Note="" Type="Time Series" xAxis="Time (%u)" yAxis="€/(m2 * Monat)" yAxis2="" showMarkers="false" showLines="true" showArea="false" Primitives="190,339,345,358" Primitives2="" AutoAddPrimitives="false" ScatterplotOrder="X Primitive, Y Primitive" Image="Display" FlipHorizontal="false" FlipVertical="false" LabelPosition="Bottom" oldId="226" legendPosition="Automatic" id="226">
+      <mxCell style="display" parent="1" vertex="1" visible="0">
+        <mxGeometry x="10" y="10" width="64" height="64" as="geometry" />
+      </mxCell>
+    </Display>
+    <Setting Note="" Version="37" TimeLength="15" TimeStart="2020" TimeStep="0.1" TimeUnits="Years" Units="" SolutionAlgorithm="RK1" BackgroundColor="white" Throttle="5" Macros="" SensitivityPrimitives="" SensitivityRuns="50" SensitivityBounds="50, 80, 95, 100" SensitivityShowRuns="false" StyleSheet="{&quot;Variable&quot;:{&quot;shape&quot;:&quot;rectangle&quot;,&quot;perimeter&quot;:&quot;rectanglePerimeter&quot;,&quot;verticalAlign&quot;:&quot;middle&quot;,&quot;align&quot;:&quot;center&quot;,&quot;fillColor&quot;:&quot;none&quot;,&quot;strokeColor&quot;:&quot;none&quot;,&quot;fontColor&quot;:&quot;#333333&quot;,&quot;overflow&quot;:&quot;&quot;,&quot;fontSize&quot;:14,&quot;fontFamily&quot;:&quot;Courier New&quot;,&quot;strokeWidth&quot;:2,&quot;fontStyle&quot;:&quot;1&quot;},&quot;Folder&quot;:{&quot;shape&quot;:&quot;rectangle&quot;,&quot;perimeter&quot;:&quot;hexagonPerimeter&quot;,&quot;verticalAlign&quot;:&quot;top&quot;,&quot;align&quot;:&quot;center&quot;,&quot;fillColor&quot;:&quot;none&quot;,&quot;strokeColor&quot;:&quot;#666666&quot;,&quot;fontColor&quot;:&quot;#333333&quot;,&quot;overflow&quot;:&quot;&quot;,&quot;fontSize&quot;:14,&quot;fontFamily&quot;:&quot;Courier New&quot;,&quot;strokeWidth&quot;:&quot;1&quot;,&quot;dashed&quot;:1,&quot;rounded&quot;:1,&quot;image&quot;:&quot;None&quot;},&quot;Stock&quot;:{&quot;shape&quot;:&quot;rectangle&quot;,&quot;verticalAlign&quot;:&quot;middle&quot;,&quot;align&quot;:&quot;center&quot;,&quot;fillColor&quot;:&quot;#A6D3F8&quot;,&quot;strokeColor&quot;:&quot;#666666&quot;,&quot;fontColor&quot;:&quot;#333333&quot;,&quot;overflow&quot;:&quot;&quot;,&quot;fontSize&quot;:14,&quot;fontFamily&quot;:&quot;Courier New&quot;,&quot;strokeWidth&quot;:2,&quot;fontStyle&quot;:&quot;1&quot;},&quot;Flow&quot;:{&quot;shape&quot;:&quot;connector&quot;,&quot;endArrow&quot;:&quot;classic&quot;,&quot;verticalAlign&quot;:&quot;middle&quot;,&quot;align&quot;:&quot;center&quot;,&quot;strokeColor&quot;:&quot;#6482B9&quot;,&quot;fontColor&quot;:&quot;#446299&quot;,&quot;labelBackgroundColor&quot;:&quot;white&quot;,&quot;rounded&quot;:1,&quot;fontSize&quot;:14,&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;fontFamily&quot;:&quot;Courier New&quot;,&quot;strokeWidth&quot;:4,&quot;fontStyle&quot;:&quot;1&quot;}}" SlidersList="[{&quot;type&quot;:&quot;primitive&quot;,&quot;id&quot;:&quot;379&quot;},{&quot;type&quot;:&quot;primitive&quot;,&quot;id&quot;:&quot;514&quot;},{&quot;type&quot;:&quot;primitive&quot;,&quot;id&quot;:&quot;515&quot;},{&quot;type&quot;:&quot;primitive&quot;,&quot;id&quot;:&quot;518&quot;},{&quot;type&quot;:&quot;primitive&quot;,&quot;id&quot;:&quot;519&quot;},{&quot;type&quot;:&quot;primitive&quot;,&quot;id&quot;:&quot;444&quot;},{&quot;type&quot;:&quot;primitive&quot;,&quot;id&quot;:&quot;483&quot;},{&quot;type&quot;:&quot;primitive&quot;,&quot;id&quot;:&quot;555&quot;}]" ScenariosList="[{&quot;name&quot;:&quot;Grundannahme Ausgangssituation&quot;,&quot;primitives&quot;:{&quot;379&quot;:&quot;8&quot;,&quot;444&quot;:&quot;0.5&quot;,&quot;483&quot;:&quot;3&quot;,&quot;514&quot;:&quot;60&quot;,&quot;515&quot;:&quot;30&quot;,&quot;518&quot;:&quot;90&quot;,&quot;519&quot;:&quot;10&quot;,&quot;555&quot;:&quot;2.5&quot;}}]" id="2">
+      <mxCell parent="1" vertex="1" visible="0">
+        <mxGeometry x="20" y="20" width="80" height="40" as="geometry" />
+      </mxCell>
+    </Setting>
+    <Text name="Modell Maßstab Gesamtstadt" LabelPosition="Middle" oldId="92" id="92">
+      <mxCell style="text;fontFamily=Courier New;fontStyle=1;fillColor=none;fontSize=60;align=left;" parent="1" vertex="1">
+        <mxGeometry x="3840" y="1940" width="740" height="200" as="geometry" />
+      </mxCell>
+    </Text>
+    <Picture name="" Note="" Image="https://raw.githubusercontent.com/citysciencelab/cut-storytelling-tool/main/portal/mobility-data/assets/img/csl.jpg" FlipHorizontal="false" FlipVertical="false" LabelPosition="Bottom" oldId="93" id="93">
+      <mxCell style="picture;image=https://raw.githubusercontent.com/citysciencelab/cut-storytelling-tool/main/portal/mobility-data/assets/img/csl.jpg;imageFlipV=0;imageFlipH=0;shape=image;fillColor=#B3E2CD;" parent="1" vertex="1">
+        <mxGeometry x="4810" y="2310" width="340" height="360" as="geometry" />
+      </mxCell>
+    </Picture>
+    <Display name="Wohnen + Energie" Note="" Type="Time Series" xAxis="Time (%u)" yAxis="" yAxis2="" showMarkers="false" showLines="true" showArea="false" Primitives="412,411,417" Primitives2="" AutoAddPrimitives="false" ScatterplotOrder="X Primitive, Y Primitive" Image="Display" FlipHorizontal="false" FlipVertical="false" LabelPosition="Bottom" oldId="231" legendPosition="Automatic" id="231">
+      <mxCell style="display" parent="1" vertex="1" visible="0">
+        <mxGeometry x="10" y="10" width="64" height="64" as="geometry" />
+      </mxCell>
+    </Display>
+    <Folder name="Wärmeversorgung der Gebäude" Note="" Type="None" Solver="{&quot;enabled&quot;:false,&quot;algorithm&quot;:&quot;RK1&quot;,&quot;timeStep&quot;:1}" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" AgentBase="" oldId="404" id="404">
+      <mxCell style="folder;image=None;shape=rectangle;" parent="1" vertex="1">
+        <mxGeometry x="370" y="1770" width="1210" height="850" as="geometry">
+          <mxRectangle x="20" y="620" width="150" height="20" as="alternateBounds" />
+        </mxGeometry>
+      </mxCell>
+    </Folder>
+    <Stock name="Fossile Wärmeversorgung" Note="Gas, Öl&lt;br&gt;" InitialValue="[Anteil Fossile Anlagen 2019]/100*[Anzahl Wärmeversorgungsanlagen]" StockMode="Store" Delay="10" Volume="100" NonNegative="false" Units="Anlagen" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="398" id="398">
+      <mxCell style="stock" parent="404" vertex="1">
+        <mxGeometry x="215" y="332.5" width="170" height="70" as="geometry" />
+      </mxCell>
+    </Stock>
+    <Stock name="Erneuerbare Wärmeversorgung" Note="Wärmepumpen, Holz/Pellets, Stromspeicher" InitialValue="[Anteil Erneuerbare Anlagen 2019]/100*[Anzahl Wärmeversorgungsanlagen]" StockMode="Store" Delay="10" Volume="100" NonNegative="false" Units="Anlagen" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="399" id="399">
+      <mxCell style="stock" parent="404" vertex="1">
+        <mxGeometry x="735" y="332.5" width="160" height="70" as="geometry" />
+      </mxCell>
+    </Stock>
+    <Flow name="Außerbetriebnahme" Note="" FlowRate="(Delay3([Inbetriebnahme fossile Wärmeversorgung], [Lebensdauer fossile Wärmeversorgung]) + [Modernisierung von fossilen Anlagen])*IfThenElse([Fossile Wärmeversorgung] &lt;= {0 Anlagen}, 0, 1)" OnlyPositive="true" TimeIndependent="false" Units="Anlagen / Year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" oldId="400" id="400">
+      <mxCell style="flow" parent="404" source="398" edge="1">
+        <mxGeometry x="-65" y="-1377.5" width="100" height="100" as="geometry">
+          <mxPoint x="-65" y="-1277.5" as="sourcePoint" />
+          <mxPoint x="240" y="580" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Flow>
+    <Flow name="Inbetriebnahme fossile Wärmeversorgung" Note="" FlowRate="" OnlyPositive="true" TimeIndependent="false" Units="Anlagen / Year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" oldId="401" id="401">
+      <mxCell style="flow" parent="404" target="398" edge="1">
+        <mxGeometry x="-185" y="-1297.5" width="100" height="100" as="geometry">
+          <mxPoint x="40" y="370" as="sourcePoint" />
+          <mxPoint x="-185" y="-1197.5" as="targetPoint" />
+          <Array as="points" />
+        </mxGeometry>
+      </mxCell>
+    </Flow>
+    <Flow name="Außerbetriebnahme" Note="" FlowRate="Delay3([Inbetriebnahme erneuerbare Wärmeversorgung], [Lebensdauer erneuerbare Wärmeversorgung], [Außerbetriebnahmen 2020])" OnlyPositive="true" TimeIndependent="false" Units="Anlagen / Year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" oldId="402" id="402">
+      <mxCell style="flow" parent="404" source="399" edge="1">
+        <mxGeometry x="-34.57" y="-1377.5" width="100" height="100" as="geometry">
+          <mxPoint x="-34.57" y="-1277.5" as="sourcePoint" />
+          <mxPoint x="860.43" y="570" as="targetPoint" />
+          <Array as="points" />
+        </mxGeometry>
+      </mxCell>
+    </Flow>
+    <Flow name="Inbetriebnahme erneuerbare Wärmeversorgung" Note="" FlowRate="[Zubau erneuerbare Wärmeversorgung]" OnlyPositive="true" TimeIndependent="false" Units="Anlagen / Year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" oldId="403" id="403">
+      <mxCell style="flow" parent="404" target="399" edge="1">
+        <mxGeometry x="94.46000000000001" y="-1256.25" width="100" height="100" as="geometry">
+          <mxPoint x="1120" y="360" as="sourcePoint" />
+          <mxPoint x="94.46000000000001" y="-1156.25" as="targetPoint" />
+          <Array as="points" />
+        </mxGeometry>
+      </mxCell>
+    </Flow>
+    <Stock name="Fernwärmeversorgung" Note="" InitialValue="[Anteil Fernwärme Anlagen 2019]/100*[Anzahl Wärmeversorgungsanlagen]" StockMode="Store" Delay="10" Volume="100" NonNegative="false" Units="Anlagen" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="405" id="405">
+      <mxCell style="stock" parent="404" vertex="1">
+        <mxGeometry x="490" y="332.5" width="170" height="70" as="geometry" />
+      </mxCell>
+    </Stock>
+    <Variable name="Aktuelle Anzahl an Wärmeversorgungsanlagen" Note="" Equation="[Fossile Wärmeversorgung]+[Fernwärmeversorgung]+[Erneuerbare Wärmeversorgung]" Units="Anlagen" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="407" id="407">
+      <mxCell style="variable" parent="404" vertex="1">
+        <mxGeometry x="515" y="617.5" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="408" id="408">
+      <mxCell style="link" parent="404" source="398" target="407" edge="1">
+        <mxGeometry x="195" y="132.5" width="100" height="100" as="geometry">
+          <mxPoint x="195" y="232.5" as="sourcePoint" />
+          <mxPoint x="295" y="132.5" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="365" y="557.5" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="409" id="409">
+      <mxCell style="link" parent="404" source="405" target="407" edge="1">
+        <mxGeometry x="195" y="132.5" width="100" height="100" as="geometry">
+          <mxPoint x="195" y="232.5" as="sourcePoint" />
+          <mxPoint x="295" y="132.5" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="410" id="410">
+      <mxCell style="link" parent="404" source="399" target="407" edge="1">
+        <mxGeometry x="195" y="132.5" width="100" height="100" as="geometry">
+          <mxPoint x="195" y="232.5" as="sourcePoint" />
+          <mxPoint x="295" y="132.5" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="765" y="557.5" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Anteil fossile Wärmeversorgung" Note="" Equation="[Fossile Wärmeversorgung]/[Aktuelle Anzahl an Wärmeversorgungsanlagen]" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="411" id="411">
+      <mxCell style="variable" parent="404" vertex="1">
+        <mxGeometry x="385" y="442.5" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="Anteil erneuerbare Wärmeversorgung" Note="" Equation="[Erneuerbare Wärmeversorgung]/[Aktuelle Anzahl an Wärmeversorgungsanlagen]" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="412" id="412">
+      <mxCell style="variable" parent="404" vertex="1">
+        <mxGeometry x="630" y="442.5" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="413" id="413">
+      <mxCell style="link" parent="404" source="398" target="411" edge="1">
+        <mxGeometry x="195" y="132.5" width="100" height="100" as="geometry">
+          <mxPoint x="195" y="232.5" as="sourcePoint" />
+          <mxPoint x="295" y="132.5" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="414" id="414">
+      <mxCell style="link" parent="404" source="407" target="411" edge="1">
+        <mxGeometry x="195" y="132.5" width="100" height="100" as="geometry">
+          <mxPoint x="195" y="232.5" as="sourcePoint" />
+          <mxPoint x="295" y="132.5" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="415" id="415">
+      <mxCell style="link" parent="404" source="399" target="412" edge="1">
+        <mxGeometry x="195" y="132.5" width="100" height="100" as="geometry">
+          <mxPoint x="195" y="232.5" as="sourcePoint" />
+          <mxPoint x="295" y="132.5" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="416" id="416">
+      <mxCell style="link" parent="404" source="407" target="412" edge="1">
+        <mxGeometry x="195" y="132.5" width="100" height="100" as="geometry">
+          <mxPoint x="195" y="232.5" as="sourcePoint" />
+          <mxPoint x="295" y="132.5" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Anteil Fernwärmeversorgung" Note="" Equation="[Fernwärmeversorgung]/[Aktuelle Anzahl an Wärmeversorgungsanlagen]" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="417" id="417">
+      <mxCell style="variable" parent="404" vertex="1">
+        <mxGeometry x="515" y="502.5" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="418" id="418">
+      <mxCell style="link" parent="404" source="407" target="417" edge="1">
+        <mxGeometry x="195" y="132.5" width="100" height="100" as="geometry">
+          <mxPoint x="195" y="232.5" as="sourcePoint" />
+          <mxPoint x="295" y="132.5" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="419" id="419">
+      <mxCell style="link" parent="404" source="405" target="417" edge="1">
+        <mxGeometry x="195" y="132.5" width="100" height="100" as="geometry">
+          <mxPoint x="195" y="232.5" as="sourcePoint" />
+          <mxPoint x="295" y="132.5" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Flow name="Zubau Fernwärme" Note="" FlowRate="[Zubau Fernwärme-anschlüsse]" OnlyPositive="true" TimeIndependent="false" Units="Anlagen / Year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" oldId="406" id="406">
+      <mxCell style="flow" parent="404" target="405" edge="1">
+        <mxGeometry x="205" y="-1697.5" width="100" height="100" as="geometry">
+          <mxPoint x="520" y="230" as="sourcePoint" />
+          <mxPoint x="205" y="-1597.5" as="targetPoint" />
+          <mxPoint y="-10" as="offset" />
+          <Array as="points" />
+        </mxGeometry>
+      </mxCell>
+    </Flow>
+    <Variable name="Anteil Fossile Anlagen 2019" Note="https://www.bdew.de/media/documents/BDEW_Heizungsmarkt_Regionalbericht_Hamburg.pdf" Equation="26.6+19.4+7.2+4+0.1+1.2+0.1" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="421" id="421">
+      <mxCell style="variable" parent="404" vertex="1">
+        <mxGeometry x="200" y="220" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="422" id="422">
+      <mxCell style="link" parent="404" source="421" target="398" edge="1">
+        <mxGeometry y="70" width="100" height="100" as="geometry">
+          <mxPoint y="170" as="sourcePoint" />
+          <mxPoint x="100" y="70" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Anteil Erneuerbare Anlagen 2019" Note="https://www.bdew.de/media/documents/BDEW_Heizungsmarkt_Regionalbericht_Hamburg.pdf" Equation="1.9+1.5+0.3+1" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="423" id="423">
+      <mxCell style="variable" parent="404" vertex="1">
+        <mxGeometry x="810" y="200" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="424" id="424">
+      <mxCell style="link" parent="404" source="423" target="399" edge="1">
+        <mxGeometry y="70" width="100" height="100" as="geometry">
+          <mxPoint y="170" as="sourcePoint" />
+          <mxPoint x="100" y="70" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Anteil Fernwärme Anlagen 2019" Note="https://www.bdew.de/media/documents/BDEW_Heizungsmarkt_Regionalbericht_Hamburg.pdf" Equation="36.6" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="425" id="425">
+      <mxCell style="variable" parent="404" vertex="1">
+        <mxGeometry x="580.0000000000002" y="210" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="426" id="426">
+      <mxCell style="link" parent="404" source="425" target="405" edge="1">
+        <mxGeometry y="70" width="100" height="100" as="geometry">
+          <mxPoint y="170" as="sourcePoint" />
+          <mxPoint x="100" y="70" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Ghost Source="363" oldId="427" name="Anzahl Gebäude mit Wohnraum Hamburg" id="427">
+      <mxCell style="variable;opacity=30;" parent="404" vertex="1">
+        <mxGeometry x="615" y="40" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Ghost>
+    <Variable name="Wärmeversorgungsanlagen pro Gebäude" Note="" Equation="1" Units="Anlagen / Wohngebaeude" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="431" id="431">
+      <mxCell style="variable" parent="404" vertex="1">
+        <mxGeometry x="400.0000000000002" y="40" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="Anzahl Wärmeversorgungsanlagen" Note="" Equation="[Anzahl Gebäude mit Wohnraum Hamburg]*[Wärmeversorgungsanlagen pro Gebäude]" Units="Anlagen" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="432" id="432">
+      <mxCell style="variable" parent="404" vertex="1">
+        <mxGeometry x="515" y="110" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="433" id="433">
+      <mxCell style="link" parent="404" source="427" target="432" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="434" id="434">
+      <mxCell style="link" parent="404" source="431" target="432" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="435" id="435">
+      <mxCell style="link" parent="404" source="432" target="405" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="436" id="436">
+      <mxCell style="link" parent="404" source="432" target="399" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="750" y="180" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="437" id="437">
+      <mxCell style="link" parent="404" source="432" target="398" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="360" y="180" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Lebensdauer erneuerbare Wärmeversorgung" Note="&lt;div&gt;https://praxistipps.focus.de/haltbarkeit-und-lebensdauer-einer-waermepumpe-alle-infos_100274&lt;/div&gt;&lt;div&gt;Wärmepumpe 15-20 Jahre&lt;br&gt;&lt;/div&gt;" Equation="17" Units="Year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="474" id="474">
+      <mxCell style="variable" parent="404" vertex="1">
+        <mxGeometry x="960" y="540" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="475" id="475">
+      <mxCell style="link" parent="404" source="474" target="402" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Lebensdauer fossile Wärmeversorgung" Note="https://www.thermondo.de/info/rat/vergleich/lebensdauer-heizung/" Equation="20" Units="Year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="476" id="476">
+      <mxCell style="variable" parent="404" vertex="1">
+        <mxGeometry x="30" y="502.5000000000002" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="477" id="477">
+      <mxCell style="link" parent="404" source="476" target="400" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="479" id="479">
+      <mxCell style="link" parent="404" source="401" target="400" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="480" id="480">
+      <mxCell style="link" parent="404" source="403" target="402" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Ghost Source="482" oldId="499" name="Zubau Fernwärme-anschlüsse" id="499">
+      <mxCell style="variable;opacity=30;" parent="404" vertex="1">
+        <mxGeometry x="385" y="200" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Ghost>
+    <Link name="Link" Note="" BiDirectional="false" oldId="531" id="531">
+      <mxCell style="link" parent="404" source="499" target="406" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Ghost Source="511" oldId="532" name="Zubau erneuerbare Wärmeversorgung" id="532">
+      <mxCell style="variable;opacity=30;" parent="404" vertex="1">
+        <mxGeometry x="50" y="720" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Ghost>
+    <Ghost Source="482" oldId="533" name="Zubau Fernwärme-anschlüsse" id="533">
+      <mxCell style="variable;opacity=30;" parent="404" vertex="1">
+        <mxGeometry x="210" y="720" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Ghost>
+    <Link name="Link" Note="" BiDirectional="false" oldId="534" id="534">
+      <mxCell style="link" parent="404" source="533" target="538" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="535" id="535">
+      <mxCell style="link" parent="404" source="532" target="538" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Außerbetriebnahmen 2020" Note="Annahme: Keine signifikanten Anlagen wurden 2020 im Bereich der erneuerbaren Wärmeversorgung außer Betrieb genommen&lt;br&gt;" Equation="0" Units="Anlagen / Year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="536" id="536">
+      <mxCell style="variable" parent="404" vertex="1">
+        <mxGeometry x="1020" y="460" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="537" id="537">
+      <mxCell style="link" parent="404" source="536" target="402" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Modernisierung von fossilen Anlagen" Note="" Equation="[Zubau Fernwärme-anschlüsse]+[Zubau erneuerbare Wärmeversorgung]" Units="Anlagen / Year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="538" id="538">
+      <mxCell style="variable" parent="404" vertex="1">
+        <mxGeometry x="130" y="617.5000000000002" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="539" id="539">
+      <mxCell style="link" parent="404" source="538" target="400" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="New Variable" Note="" Equation="0" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="420" id="420">
+      <mxCell style="variable" parent="1" vertex="1">
+        <mxGeometry x="-200" y="1520" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="242" id="242">
+      <mxCell style="link" parent="1" source="188" target="241" edge="1">
+        <mxGeometry x="824" y="140" width="100" height="100" as="geometry">
+          <mxPoint x="824" y="240" as="sourcePoint" />
+          <mxPoint x="924" y="140" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="277" id="277">
+      <mxCell style="link" parent="1" source="214" target="247" edge="1">
+        <mxGeometry x="830" y="-90" width="100" height="100" as="geometry">
+          <mxPoint x="830" y="10" as="sourcePoint" />
+          <mxPoint x="930" y="-90" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="278" id="278">
+      <mxCell style="link" parent="1" source="190" target="247" edge="1">
+        <mxGeometry x="830" y="-90" width="100" height="100" as="geometry">
+          <mxPoint x="830" y="10" as="sourcePoint" />
+          <mxPoint x="930" y="-90" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="302" id="302">
+      <mxCell style="link" parent="1" source="294" target="342" edge="1">
+        <mxGeometry x="830" y="-90" width="100" height="100" as="geometry">
+          <mxPoint x="830" y="10" as="sourcePoint" />
+          <mxPoint x="930" y="-90" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="359" id="359">
+      <mxCell style="link" parent="1" source="395" target="358" edge="1">
+        <mxGeometry x="830" y="-90" width="100" height="100" as="geometry">
+          <mxPoint x="2497.52" y="1035" as="sourcePoint" />
+          <mxPoint x="930" y="-90" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="360" id="360">
+      <mxCell style="link" parent="1" source="199" target="358" edge="1">
+        <mxGeometry x="830" y="-90" width="100" height="100" as="geometry">
+          <mxPoint x="830" y="10" as="sourcePoint" />
+          <mxPoint x="930" y="-90" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Folder name="Modernisierungsmieterhöhung" Note="" Type="None" Solver="{&quot;enabled&quot;:false,&quot;algorithm&quot;:&quot;RK1&quot;,&quot;timeStep&quot;:1}" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" AgentBase="" oldId="454" id="454">
+      <mxCell style="folder;image=None;shape=rectangle;" parent="1" vertex="1">
+        <mxGeometry x="830" y="180" width="790" height="340" as="geometry">
+          <mxRectangle x="1540" y="320" width="260" height="20" as="alternateBounds" />
+        </mxGeometry>
+      </mxCell>
+    </Folder>
+    <Variable name="Modernisierungsmieterhöhung nach aktueller Gesetzeslage" Note="&lt;span class=&quot;markedContent&quot; id=&quot;page61R_mcid7&quot;&gt;&lt;span style=&quot;left: calc(var(--scale-factor)*488.60px); top: calc(var(--scale-factor)*615.88px); font-size: calc(var(--scale-factor)*11.04px); font-family: sans-serif; transform: scaleX(0.983333);&quot; role=&quot;presentation&quot; dir=&quot;ltr&quot;&gt;Die&lt;/span&gt; &lt;span style=&quot;left: calc(var(--scale-factor)*90.02px); top: calc(var(--scale-factor)*630.76px); font-size: calc(var(--scale-factor)*11.04px); font-family: sans-serif; transform: scaleX(1.01968);&quot; role=&quot;presentation&quot; dir=&quot;ltr&quot;&gt;Modernisierungsumlage&lt;/span&gt;&lt;span style=&quot;left: calc(var(--scale-factor)*210.17px); top: calc(var(--scale-factor)*630.76px); font-size: calc(var(--scale-factor)*11.04px); font-family: sans-serif;&quot; role=&quot;presentation&quot; dir=&quot;ltr&quot;&gt; &lt;/span&gt;&lt;span style=&quot;left: calc(var(--scale-factor)*219.41px); top: calc(var(--scale-factor)*630.76px); font-size: calc(var(--scale-factor)*11.04px); font-family: sans-serif; transform: scaleX(0.974515);&quot; role=&quot;presentation&quot; dir=&quot;ltr&quot;&gt;gemäß&lt;/span&gt;&lt;span style=&quot;left: calc(var(--scale-factor)*252.90px); top: calc(var(--scale-factor)*630.76px); font-size: calc(var(--scale-factor)*11.04px); font-family: sans-serif;&quot; role=&quot;presentation&quot; dir=&quot;ltr&quot;&gt; &lt;/span&gt;&lt;span style=&quot;left: calc(var(--scale-factor)*262.12px); top: calc(var(--scale-factor)*630.76px); font-size: calc(var(--scale-factor)*11.04px); font-family: sans-serif; transform: scaleX(1.07239);&quot; role=&quot;presentation&quot; dir=&quot;ltr&quot;&gt;Mietrecht&lt;/span&gt;&lt;span style=&quot;left: calc(var(--scale-factor)*310.81px); top: calc(var(--scale-factor)*630.76px); font-size: calc(var(--scale-factor)*11.04px); font-family: sans-serif;&quot; role=&quot;presentation&quot; dir=&quot;ltr&quot;&gt; &lt;/span&gt;&lt;span style=&quot;left: calc(var(--scale-factor)*320.03px); top: calc(var(--scale-factor)*630.76px); font-size: calc(var(--scale-factor)*11.04px); font-family: sans-serif; transform: scaleX(1.03681);&quot; role=&quot;presentation&quot; dir=&quot;ltr&quot;&gt;wurde&lt;/span&gt;&lt;span style=&quot;left: calc(var(--scale-factor)*351.21px); top: calc(var(--scale-factor)*630.76px); font-size: calc(var(--scale-factor)*11.04px); font-family: sans-serif;&quot; role=&quot;presentation&quot; dir=&quot;ltr&quot;&gt; &lt;/span&gt;&lt;span style=&quot;left: calc(var(--scale-factor)*360.45px); top: calc(var(--scale-factor)*630.76px); font-size: calc(var(--scale-factor)*11.04px); font-family: sans-serif; transform: scaleX(1.08912);&quot; role=&quot;presentation&quot; dir=&quot;ltr&quot;&gt;zuletzt&lt;/span&gt;&lt;span style=&quot;left: calc(var(--scale-factor)*395.20px); top: calc(var(--scale-factor)*630.76px); font-size: calc(var(--scale-factor)*11.04px); font-family: sans-serif;&quot; role=&quot;presentation&quot; dir=&quot;ltr&quot;&gt; &lt;/span&gt;&lt;span style=&quot;left: calc(var(--scale-factor)*404.58px); top: calc(var(--scale-factor)*630.76px); font-size: calc(var(--scale-factor)*11.04px); font-family: sans-serif; transform: scaleX(1.05437);&quot; role=&quot;presentation&quot; dir=&quot;ltr&quot;&gt;auf&lt;/span&gt;&lt;span style=&quot;left: calc(var(--scale-factor)*420.76px); top: calc(var(--scale-factor)*630.76px); font-size: calc(var(--scale-factor)*11.04px); font-family: sans-serif;&quot; role=&quot;presentation&quot; dir=&quot;ltr&quot;&gt; &lt;/span&gt;&lt;span style=&quot;left: calc(var(--scale-factor)*430.11px); top: calc(var(--scale-factor)*630.76px); font-size: calc(var(--scale-factor)*11.04px); font-family: sans-serif;&quot; role=&quot;presentation&quot; dir=&quot;ltr&quot;&gt;8&lt;/span&gt;&lt;span style=&quot;left: calc(var(--scale-factor)*436.87px); top: calc(var(--scale-factor)*630.76px); font-size: calc(var(--scale-factor)*11.04px); font-family: sans-serif;&quot; role=&quot;presentation&quot; dir=&quot;ltr&quot;&gt; &lt;/span&gt;&lt;span style=&quot;left: calc(var(--scale-factor)*439.54px); top: calc(var(--scale-factor)*630.76px); font-size: calc(var(--scale-factor)*11.04px); font-family: sans-serif; transform: scaleX(1.04626);&quot; role=&quot;presentation&quot; dir=&quot;ltr&quot;&gt;Prozent&lt;/span&gt;&lt;span style=&quot;left: calc(var(--scale-factor)*479.35px); top: calc(var(--scale-factor)*630.76px); font-size: calc(var(--scale-factor)*11.04px); font-family: sans-serif;&quot; role=&quot;presentation&quot; dir=&quot;ltr&quot;&gt; &lt;/span&gt;&lt;span style=&quot;left: calc(var(--scale-factor)*488.74px); top: calc(var(--scale-factor)*630.76px); font-size: calc(var(--scale-factor)*11.04px); font-family: sans-serif; transform: scaleX(1.0286);&quot; role=&quot;presentation&quot; dir=&quot;ltr&quot;&gt;der&lt;/span&gt; &lt;span style=&quot;left: calc(var(--scale-factor)*90.02px); top: calc(var(--scale-factor)*645.88px); font-size: calc(var(--scale-factor)*11.04px); font-family: sans-serif; transform: scaleX(1.06621);&quot; role=&quot;presentation&quot; dir=&quot;ltr&quot;&gt;Modernisierungskosten (Vollkosten abzüglich Instandhaltungsanteil) abgesenkt. (Quelle: Hamburger Klimaplan, 2019)&lt;br&gt;&lt;/span&gt;&lt;/span&gt;" Equation="[Gesamte jährliche private Modernisierungskosten]*([Maximale Modernisierungsmieterhöhung nach §559 BGB]/100)/[Gesamte Wohnfläche Hamburg]" Units="Euro / (square meter * year * year)" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="294" id="294">
+      <mxCell style="variable;shape=ellipse;perimeter=ellipsePerimeter;fillColor=#B3E2CD;strokeColor=#000000;" parent="454" vertex="1">
+        <mxGeometry x="510" y="160" width="260" height="90" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="Maximale Modernisierungsmieterhöhung nach §559 BGB" Note="[%]&lt;br&gt;" Equation="56" Units="1 / year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="true" SliderMax="100" SliderMin="0" SliderStep="1" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="379" id="379">
+      <mxCell style="variable" parent="454" vertex="1">
+        <mxGeometry x="439" y="50" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="380" id="380">
+      <mxCell style="link" parent="454" source="379" target="294" edge="1">
+        <mxGeometry x="-415" y="-80" width="100" height="100" as="geometry">
+          <mxPoint x="-415" y="20" as="sourcePoint" />
+          <mxPoint x="-315" y="-80" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Ghost Source="188" oldId="383" name="Gesamte Wohnfläche Hamburg" id="383">
+      <mxCell style="variable;fillColor=none;opacity=30;" parent="454" vertex="1">
+        <mxGeometry x="620" y="20" width="150" height="90" as="geometry" />
+      </mxCell>
+    </Ghost>
+    <Link name="Link" Note="" BiDirectional="false" oldId="384" id="384">
+      <mxCell style="link" parent="454" source="383" target="294" edge="1">
+        <mxGeometry x="-415" y="-80" width="100" height="100" as="geometry">
+          <mxPoint x="-415" y="20" as="sourcePoint" />
+          <mxPoint x="-315" y="-80" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Gesamte jährliche private Modernisierungskosten" Note="" Equation="([Investitionen Gebäudehülle privat]+[Investitionen erneuerbare Wärmeversorgung privat])*1000000" Units="Euro /  year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="396" id="396">
+      <mxCell style="variable" parent="454" vertex="1">
+        <mxGeometry x="225" y="180" width="200" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="397" id="397">
+      <mxCell style="link" parent="454" source="396" target="294" edge="1">
+        <mxGeometry x="-415" y="-80" width="100" height="100" as="geometry">
+          <mxPoint x="-415" y="20" as="sourcePoint" />
+          <mxPoint x="-315" y="-80" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Ghost Source="518" oldId="523" name="Investitionen erneuerbare Wärmeversorgung privat" id="523">
+      <mxCell style="variable;opacity=30;" parent="454" vertex="1">
+        <mxGeometry x="30" y="110" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Ghost>
+    <Ghost Source="514" oldId="524" name="Investitionen Gebäudehülle privat" id="524">
+      <mxCell style="variable;opacity=30;" parent="454" vertex="1">
+        <mxGeometry x="30" y="220" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Ghost>
+    <Link name="Link" Note="" BiDirectional="false" oldId="525" id="525">
+      <mxCell style="link" parent="454" source="524" target="396" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="526" id="526">
+      <mxCell style="link" parent="454" source="523" target="396" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Folder name="Bevölkerung &amp; Wohnen" Note="" Type="None" Solver="{&quot;enabled&quot;:false,&quot;algorithm&quot;:&quot;RK1&quot;,&quot;timeStep&quot;:1}" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" AgentBase="" oldId="232" id="232">
+      <mxCell style="folder;fontFamily=Courier New;strokeWidth=1;shape=rectangle;perimeter=hexagonPerimeter;image=None;" parent="1" vertex="1">
+        <mxGeometry x="2890" y="810" width="670" height="700" as="geometry">
+          <mxRectangle x="3060" y="1020" width="200" height="20" as="alternateBounds" />
+        </mxGeometry>
+      </mxCell>
+    </Folder>
+    <Variable name="Gesamte Wohnfläche Hamburg" Note="" Equation="[Durchschnittliche Wohnfläche pro Einwohner]*[Einwohnerprognose Statistikamt Nord]" Units="Square Meter" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="188" id="188">
+      <mxCell style="variable;fillColor=none;" parent="232" vertex="1">
+        <mxGeometry x="250" y="330" width="150" height="90" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Converter name="Einwohnerprognose Statistikamt Nord" Note="https://www.statistik-nord.de/fileadmin/Dokumente/Statistische_Berichte/bevoelkerung/A_I_8_j_HH-Stadtteile/A_I_8_j_21_HH-Stadtteile_Kor.pdf" Source="220" Data="2020,1906080; 2025,1953600; 2030,1994140; 2035,2031520" Interpolation="Linear" Units="Person" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="211" id="211">
+      <mxCell style="converter;fillColor=#CCFFFF;" parent="232" vertex="1">
+        <mxGeometry x="20" y="500" width="190" height="80" as="geometry" />
+      </mxCell>
+    </Converter>
+    <Variable name="Durchschnittliche Wohnfläche pro Einwohner" Note="&lt;div&gt;Insgesamt 983891 Wohnungen mit durchschnittlich 76,3 m2 Wohnfläche, geteilt duch 1924000 Einwohner*innen Ende 2021&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;https://www.statistik-nord.de/fileadmin/Dokumente/Statistische_Berichte/arbeit_und_soziales/F_II_1_2_4_j_H/F_II_1_2_4_j21_HH.pdf&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" Equation="983891*76.3/1924000" Units="square meter / person" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="214" id="214">
+      <mxCell style="variable" parent="232" vertex="1">
+        <mxGeometry x="80" y="120" width="120" height="90" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="215" id="215">
+      <mxCell style="link" parent="232" source="214" target="188" edge="1">
+        <mxGeometry x="-1660" y="-530" width="100" height="100" as="geometry">
+          <mxPoint x="-1660" y="-430" as="sourcePoint" />
+          <mxPoint x="-1560" y="-530" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="216" id="216">
+      <mxCell style="link" parent="232" source="211" target="188" edge="1">
+        <mxGeometry x="-1660" y="-530" width="100" height="100" as="geometry">
+          <mxPoint x="-1660" y="-430" as="sourcePoint" />
+          <mxPoint x="-1560" y="-530" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Durchschnittliche Fläche pro Wohngebäude" Note="Umsetzungsorientierte Machbarbeitsstudie, S. 7. Die Zahl bezieht sich auf durchschnittliche Wohnfläche pro Gebäude mit Wohnraum, d.h. alle Ein- und Mehrfamilienhäuser gemittlet&lt;br&gt;" Equation="284" Units="Square Meter / Wohngebaeude" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="362" id="362">
+      <mxCell style="variable" parent="232" vertex="1">
+        <mxGeometry x="480" y="370" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="Anzahl Gebäude mit Wohnraum Hamburg" Note="" Equation="[Gesamte Wohnfläche Hamburg] / [Durchschnittliche Fläche pro Wohngebäude]" Units="Wohngebaeude" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="363" id="363">
+      <mxCell style="variable" parent="232" vertex="1">
+        <mxGeometry x="405" y="520" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="364" id="364">
+      <mxCell style="link" parent="232" source="362" target="363" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="365" id="365">
+      <mxCell style="link" parent="232" source="188" target="363" edge="1">
+        <mxGeometry x="-2090" y="-820" width="100" height="100" as="geometry">
+          <mxPoint x="-2090" y="-720" as="sourcePoint" />
+          <mxPoint x="-1990" y="-820" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Aktuelles Jahr" Note="" Equation="Years()" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="220" id="220">
+      <mxCell style="variable;fillColor=none;strokeColor=none;shape=rectangle;perimeter=rectanglePerimeter;" parent="232" vertex="1">
+        <mxGeometry x="150" y="640" width="105" height="30" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="508" id="508">
+      <mxCell style="link" parent="232" source="220" target="211" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Folder name="Energie und Klima" Note="" Type="None" Solver="{&quot;enabled&quot;:false,&quot;algorithm&quot;:&quot;RK1&quot;,&quot;timeStep&quot;:1}" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" AgentBase="" oldId="240" id="240">
+      <mxCell style="folder;image=None;shape=rectangle;" parent="1" vertex="1">
+        <mxGeometry x="1650" y="940" width="1110" height="680" as="geometry">
+          <mxRectangle x="1890" y="1180" width="90" height="20" as="alternateBounds" />
+        </mxGeometry>
+      </mxCell>
+    </Folder>
+    <Variable name="Energiekosten" Note="Anteile der &lt;br&gt;" Equation="[Kosten fossile Wärmeversorgung]*[Anteil fossile Wärmeversorgung]+[Kosten erneuerbare Energieversorgung]*[Anteil erneuerbare Wärmeversorgung]+[Kosten Fernwärme]*[Anteil Fernwärmeversorgung]" Units="Euro / kWh" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="199" id="199">
+      <mxCell style="variable" parent="240" vertex="1">
+        <mxGeometry x="285" y="95" width="170" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="Gesamter Heizenergiebedarf Hamburg" Note="" Equation="[Gesamte Wohnfläche Hamburg]*[Aktueller Heizenergiebedarf]" Units="kWh/year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="241" id="241">
+      <mxCell style="variable;fillColor=#B3E2CD;shape=ellipse;perimeter=ellipsePerimeter;strokeColor=#000000;" parent="240" vertex="1">
+        <mxGeometry x="740" y="290" width="190" height="70" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="243" id="243">
+      <mxCell style="link" parent="240" source="395" target="241" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint x="746.8" y="85" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Heizenergiebedarf 2021" Note="&lt;div&gt;Umsetzungsorientierte Machbarkeitsstudie, S.21&lt;/div&gt;https://www.hamburg.de/contentblob/17012714/497dd54349da726739e02eb93e7b6de5/data/klimaschutzziele-wohngebaeude.pdf" Equation="133.5\n" Units="kWh / (square meters * year)" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="244" id="244">
+      <mxCell style="variable" parent="240" vertex="1">
+        <mxGeometry x="920" y="30" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="245" id="245">
+      <mxCell style="link" parent="240" source="244" target="395" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="840" y="63.125" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Kosten fossile Wärmeversorgung" Note="&lt;div&gt;https://www.oeffentlichen-dienst.de/wirtschafts-news/277-ratgeber/3930-heizung.html&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Mittelwert aus Öl- und Gaspreisen&lt;br&gt;&lt;/div&gt;" Equation="0.115" Units="Euro / kWh" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="253" id="253">
+      <mxCell style="variable;fontSize=14;" parent="240" vertex="1">
+        <mxGeometry x="285" y="10" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="Kosten erneuerbare Energieversorgung" Note="&lt;div&gt;https://www.oeffentlichen-dienst.de/wirtschafts-news/277-ratgeber/3930-heizung.html&lt;/div&gt;&lt;div&gt;0.075 €/kWh&lt;br&gt;&lt;/div&gt;" Equation="0.075" Units="Euro / kWh" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="1" SliderMin="0" SliderStep="0.1" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="256" id="256">
+      <mxCell style="variable;fontSize=14;" parent="240" vertex="1">
+        <mxGeometry x="495" y="87.5" width="120" height="20" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="257" id="257">
+      <mxCell style="link" parent="240" source="253" target="199" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="259" id="259">
+      <mxCell style="link" parent="240" source="256" target="199" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Kosten Fernwärme" Note="https://www.co2online.de/modernisieren-und-bauen/heizung/fernwaerme/" Equation="0.094" Units="Euro / kWh" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="260" id="260">
+      <mxCell style="variable;fontSize=14;" parent="240" vertex="1">
+        <mxGeometry x="100" y="45.00000000000023" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="262" id="262">
+      <mxCell style="link" parent="240" source="260" target="199" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="CO2-Emissionen aus dem Energiemix" Note="" Equation="[Emissionen Fernwärme]*[Anteil Fernwärmeversorgung]+[Emissionen Strom]*[Anteil erneuerbare Wärmeversorgung]+[Emissionen fossile Wärmeträger]*[Anteil fossile Wärmeversorgung]" Units="gram / kWh" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="303" id="303">
+      <mxCell style="variable;shape=ellipse;perimeter=ellipsePerimeter;fillColor=#B3E2CD;strokeColor=#000000;" parent="240" vertex="1">
+        <mxGeometry x="260" y="385" width="200" height="80" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="CO2-Emissionen aus Heizenergiebedarf" Note="" Equation="[Gesamter Heizenergiebedarf Hamburg]*[CO2-Emissionen aus dem Energiemix]" Units="Tonnes/year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="309" id="309">
+      <mxCell style="variable;shape=ellipse;perimeter=ellipsePerimeter;fillColor=#B3E2CD;strokeColor=#000000;" parent="240" vertex="1">
+        <mxGeometry x="850" y="465" width="200" height="80" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="310" id="310">
+      <mxCell style="link" parent="240" source="241" target="309" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Emissionen Fernwärme" Note="Umsetzungsorientierte Machbarkeitsstudie, S.21&lt;br&gt;" Equation="312" Units="gram / kWh" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="312" id="312">
+      <mxCell style="variable;fontSize=14;" parent="240" vertex="1">
+        <mxGeometry x="90" y="545" width="120" height="30" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="313" id="313">
+      <mxCell style="link" parent="240" source="312" target="303" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Emissionen Strom" Note="https://www.hamburg.de/contentblob/13647730/82f1c3fe9959d1d7f70106ae89a80781/data/d-hamburger-klimaplan-2019.pdf" Equation="300" Units="gram / kWh" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="314" id="314">
+      <mxCell style="variable;fontSize=14;" parent="240" vertex="1">
+        <mxGeometry x="530" y="535" width="120" height="30" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="315" id="315">
+      <mxCell style="link" parent="240" source="314" target="303" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Emissionen Gas" Note="Umsetzungsorientierte Machbarkeitsstudie, S.21" Equation="182" Units="gram / kWh" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="316" id="316">
+      <mxCell style="variable;fontSize=10;" parent="240" vertex="1">
+        <mxGeometry x="375" y="640" width="120" height="20" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="322" id="322">
+      <mxCell style="link" parent="240" source="303" target="309" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Emissionen Öl" Note="Umsetzungsorientierte Machbarkeitsstudie, S.21" Equation="250" Units="gram / kWh" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="318" id="318">
+      <mxCell style="variable;fontSize=10;" parent="240" vertex="1">
+        <mxGeometry x="250" y="640" width="120" height="20" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Ghost Source="326" oldId="337" name="Einsparungen am Heizenergiebedarf durch energetische Modernisierung an der Gebäudehülle" id="337">
+      <mxCell style="variable;opacity=30;" parent="240" vertex="1">
+        <mxGeometry x="900" y="140" width="180" height="50" as="geometry" />
+      </mxCell>
+    </Ghost>
+    <Variable name="Aktueller Heizenergiebedarf" Note="" Equation="[Heizenergiebedarf 2021] - [Einsparungen am Heizenergiebedarf durch energetische Modernisierung an der Gebäudehülle]" Units="kWh / (square meters * year)" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="395" id="395">
+      <mxCell style="variable" parent="240" vertex="1">
+        <mxGeometry x="670" y="57.5" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="338" id="338">
+      <mxCell style="link" parent="240" source="337" target="395" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="800" y="163" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Ghost Source="411" oldId="540" name="Anteil fossile Wärmeversorgung" id="540">
+      <mxCell style="variable;opacity=30;" parent="240" vertex="1">
+        <mxGeometry x="300" y="250" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Ghost>
+    <Ghost Source="417" oldId="541" name="Anteil Fernwärmeversorgung" id="541">
+      <mxCell style="variable;opacity=30;" parent="240" vertex="1">
+        <mxGeometry x="80" y="250" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Ghost>
+    <Ghost Source="412" oldId="542" name="Anteil erneuerbare Wärmeversorgung" id="542">
+      <mxCell style="variable;opacity=30;" parent="240" vertex="1">
+        <mxGeometry x="480" y="250" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Ghost>
+    <Link name="Link" Note="" BiDirectional="false" oldId="543" id="543">
+      <mxCell style="link" parent="240" source="542" target="303" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="544" id="544">
+      <mxCell style="link" parent="240" source="541" target="303" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="545" id="545">
+      <mxCell style="link" parent="240" source="540" target="303" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="546" id="546">
+      <mxCell style="link" parent="240" source="540" target="199" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="547" id="547">
+      <mxCell style="link" parent="240" source="541" target="199" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="548" id="548">
+      <mxCell style="link" parent="240" source="542" target="199" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Emissionen fossile Wärmeträger" Note="&lt;div&gt;ca. 60% sind derzeit Gasheizungen, der Rest Ölheizungen&lt;/div&gt;&lt;div&gt;https://www.bdew.de/media/documents/BDEW_Heizungsmarkt_Regionalbericht_Hamburg.pdf&lt;br&gt;&lt;/div&gt;" Equation="0.6*[Emissionen Gas]+0.4*[Emissionen Öl]" Units="gram / kWh" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="549" id="549">
+      <mxCell style="variable" parent="240" vertex="1">
+        <mxGeometry x="310" y="535" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="550" id="550">
+      <mxCell style="link" parent="240" source="549" target="303" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="551" id="551">
+      <mxCell style="link" parent="240" source="316" target="549" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="552" id="552">
+      <mxCell style="link" parent="240" source="318" target="549" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="CO2-Emissionen aus Heizen pro m2" Note="" Equation="[CO2-Emissionen aus Heizenergiebedarf]/[Gesamte Wohnfläche Hamburg]" Units="tonnes/ (year* square meter)" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="567" id="567">
+      <mxCell style="variable" parent="240" vertex="1">
+        <mxGeometry x="980" y="370" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="568" id="568">
+      <mxCell style="link" parent="240" source="309" target="567" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Folder name="Maßnahmen energetischer Modernisierung" Note="" Type="None" Solver="{&quot;enabled&quot;:false,&quot;algorithm&quot;:&quot;RK1&quot;,&quot;timeStep&quot;:1}" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" AgentBase="" oldId="252" id="252">
+      <mxCell style="folder;fillColor=#B3E2CD;strokeWidth=2;dashed=0;strokeColor=#000000;image=None;shape=rectangle;" parent="1" vertex="1">
+        <mxGeometry x="1790" y="1750" width="1840" height="1170" as="geometry">
+          <mxRectangle x="1920" y="1800" width="350" height="20" as="alternateBounds" />
+        </mxGeometry>
+      </mxCell>
+    </Folder>
+    <Variable name="Einsparungen am Heizenergiebedarf durch energetische Modernisierung an der Gebäudehülle" Note="" Equation="[Durchschnittliche Einsparung durch Investitionen an der Gebäudehülle]*[Investitionen in energetische Modernisierung der Gebäudehülle]" Units="kWh/( square meter * year)" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="326" id="326">
+      <mxCell style="variable" parent="252" vertex="1">
+        <mxGeometry x="1275" y="385" width="220" height="100" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Stock name="Investitionen in energetische Modernisierung der Gebäudehülle" Note="" InitialValue="0" StockMode="Store" Delay="10" Volume="100" NonNegative="false" Units="Euro" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="329" id="329">
+      <mxCell style="stock;fontFamily=Courier New;fontStyle=1" parent="252" vertex="1">
+        <mxGeometry x="1310" y="565" width="150" height="90" as="geometry" />
+      </mxCell>
+    </Stock>
+    <Flow name="Jährliche private Investitionen in die Gebäudehülle" Note="gemeint sind ausschließlich Investitionen zur Modernisierung&lt;br&gt;" FlowRate="[Investitionen Gebäudehülle privat]*1000000" OnlyPositive="true" TimeIndependent="false" Units="Euro /  year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" oldId="332" id="332">
+      <mxCell style="flow" parent="252" target="329" edge="1">
+        <mxGeometry x="705" y="315" width="100" height="100" as="geometry">
+          <mxPoint x="1365" y="835" as="sourcePoint" />
+          <mxPoint x="-465.00000000000006" y="-1205" as="targetPoint" />
+          <Array as="points" />
+          <mxPoint x="-60" y="-20" as="offset" />
+        </mxGeometry>
+      </mxCell>
+    </Flow>
+    <Flow name="Jährliche öffentliche Investitionen in die Gebäudehülle" Note="" FlowRate="[Investitionen Gebäudehülle öffentlich]*1000000" OnlyPositive="true" TimeIndependent="false" Units="Euro /  year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" oldId="331" id="331">
+      <mxCell style="flow;fontFamily=Courier New;fontStyle=1" parent="252" target="329" edge="1">
+        <mxGeometry x="-5" y="195" width="100" height="100" as="geometry">
+          <mxPoint x="1405" y="835" as="sourcePoint" />
+          <mxPoint x="-486" y="-1155" as="targetPoint" />
+          <Array as="points" />
+          <mxPoint x="70" y="-20" as="offset" />
+        </mxGeometry>
+      </mxCell>
+    </Flow>
+    <Stock name="Investitionen in erneuerbare Wärmeversorgungs-varianten" Note="" InitialValue="0" StockMode="Store" Delay="10" Volume="100" NonNegative="false" Units="Euro" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="334" id="334">
+      <mxCell style="stock;fontFamily=Courier New;fontStyle=1" parent="252" vertex="1">
+        <mxGeometry x="610" y="570" width="170" height="100" as="geometry" />
+      </mxCell>
+    </Stock>
+    <Variable name="Durchschnittliche Einsparung durch Investitionen an der Gebäudehülle" Note="Umrechnung auf die städtische Wohnfläche &lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" Equation="[Durchschnittliche Einsparungen Modellrechnung] * [Wohnfläche Modellrechnung] / [Gesamte Wohnfläche Hamburg]" Units="kWh/(square meter * year * Euro)" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="15" SliderMin="0" SliderStep="0.5" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="325" id="325">
+      <mxCell style="variable" parent="252" vertex="1">
+        <mxGeometry x="1295" y="240" width="180" height="90" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="327" id="327">
+      <mxCell style="link" parent="252" source="325" target="326" edge="1">
+        <mxGeometry x="190" y="330" width="100" height="100" as="geometry">
+          <mxPoint x="190" y="430" as="sourcePoint" />
+          <mxPoint x="290" y="330" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Wohnfläche Modellrechnung" Note="" Equation="150" Units="Square Meter" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="390" id="390">
+      <mxCell style="variable" parent="252" vertex="1">
+        <mxGeometry x="1560" y="150" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="391" id="391">
+      <mxCell style="link" parent="252" source="390" target="325" edge="1">
+        <mxGeometry x="190" y="220" width="100" height="100" as="geometry">
+          <mxPoint x="190" y="320" as="sourcePoint" />
+          <mxPoint x="290" y="220" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Durchschnittliche Einsparungen Modellrechnung" Note="&lt;div&gt;https://www.test.de/Modernisierung-Aus-Alt-wird-Neu-1563749-1563728/&lt;/div&gt;&lt;div&gt;bezogen auf 150qm Wohnfläche in einem EFH:&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Dämmung oberes Geschosswerk: 0,0084&lt;/div&gt;&lt;div&gt;Dämmung Fassade: 0,0035&lt;/div&gt;&lt;div&gt;Dämmung Kellerdecke: 0,0113&lt;/div&gt;Erneuerung Fenster: 0,0008" Equation="0.006" Units="kWh/(square meter * year * Euro)" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="392" id="392">
+      <mxCell style="variable" parent="252" vertex="1">
+        <mxGeometry x="1130" y="140" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="393" id="393">
+      <mxCell style="link" parent="252" source="392" target="325" edge="1">
+        <mxGeometry x="190" y="220" width="100" height="100" as="geometry">
+          <mxPoint x="190" y="320" as="sourcePoint" />
+          <mxPoint x="290" y="220" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="394" id="394">
+      <mxCell style="link" parent="252" source="329" target="326" edge="1">
+        <mxGeometry x="190" y="220" width="100" height="100" as="geometry">
+          <mxPoint x="190" y="320" as="sourcePoint" />
+          <mxPoint x="290" y="220" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Anteil an Fernwärme-investitionen" Note="[%]" Equation="76" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="true" SliderMax="100" SliderMin="0" SliderStep="1" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="444" id="444">
+      <mxCell style="variable" parent="252" vertex="1">
+        <mxGeometry x="380.00000000000045" y="400.0000000000002" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="Aktuelle Investitionen in Fernwärme" Note="" Equation="[Anteil an Fernwärme-investitionen]*[Aktuelle jährliche Investitionen]/100" Units="Euro /  year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="445" id="445">
+      <mxCell style="variable" parent="252" vertex="1">
+        <mxGeometry x="390.0000000000002" y="515.0000000000002" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="Aktuelle Investitionen in erneuerbare Wärmeversorgung" Note="" Equation="(1-[Anteil an Fernwärme-investitionen]) * [Aktuelle jährliche Investitionen] / 100" Units="Euro /  year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="447" id="447">
+      <mxCell style="variable" parent="252" vertex="1">
+        <mxGeometry x="380" y="285" width="200" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="448" id="448">
+      <mxCell style="link" parent="252" source="444" target="445" edge="1">
+        <mxGeometry x="190" y="140" width="100" height="100" as="geometry">
+          <mxPoint x="190" y="240" as="sourcePoint" />
+          <mxPoint x="290" y="140" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="449" id="449">
+      <mxCell style="link" parent="252" source="444" target="447" edge="1">
+        <mxGeometry x="190" y="140" width="100" height="100" as="geometry">
+          <mxPoint x="190" y="240" as="sourcePoint" />
+          <mxPoint x="290" y="140" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Kosten Fernwärmeanschluss 2020" Note="&lt;div&gt;5.000-10.000€ plus Montage&lt;/div&gt;&lt;div&gt;https://www.heizung.de/finanzielles/wissen/typische-fernwaerme-kosten-im-ueberblick.html&lt;br&gt;&lt;/div&gt;" Equation="10000" Units="Euro/Anlagen" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="456" id="456">
+      <mxCell style="variable" parent="252" vertex="1">
+        <mxGeometry x="20" y="580" width="140" height="70" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Flow name="Jährliche öffentliche Investitionen Wärmeversorgung" Note="" FlowRate="[Investitionen erneuerbare Wärmeversorgung öffentlich]*1000000" OnlyPositive="true" TimeIndependent="false" Units="Euro /  year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" oldId="336" id="336">
+      <mxCell style="flow" parent="252" target="334" edge="1">
+        <mxGeometry x="165" y="200" width="100" height="100" as="geometry">
+          <mxPoint x="735" y="860" as="sourcePoint" />
+          <mxPoint x="595" y="710" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="735" y="740" />
+          </Array>
+          <mxPoint x="80" y="-20" as="offset" />
+        </mxGeometry>
+      </mxCell>
+    </Flow>
+    <Flow name="Jährliche private Investitionen Wärmeversorgung" Note="" FlowRate="[Investitionen erneuerbare Wärmeversorgung privat]*1000000" OnlyPositive="true" TimeIndependent="false" Units="Euro /  year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" oldId="335" id="335">
+      <mxCell style="flow" parent="252" target="334" edge="1">
+        <mxGeometry x="275" y="200" width="100" height="100" as="geometry">
+          <mxPoint x="675" y="860" as="sourcePoint" />
+          <mxPoint x="1255.1754385964914" y="845" as="targetPoint" />
+          <Array as="points" />
+          <mxPoint x="-70" y="-10" as="offset" />
+        </mxGeometry>
+      </mxCell>
+    </Flow>
+    <Variable name="Aktuelle jährliche Investitionen" Note="" Equation="[Jährliche öffentliche Investitionen Wärmeversorgung]+[Jährliche private Investitionen Wärmeversorgung]" Units="Euro /  year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="461" id="461">
+      <mxCell style="variable" parent="252" vertex="1">
+        <mxGeometry x="630" y="410" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="464" id="464">
+      <mxCell style="link" parent="252" source="336" target="461" edge="1">
+        <mxGeometry x="190" y="140" width="100" height="100" as="geometry">
+          <mxPoint x="190" y="240" as="sourcePoint" />
+          <mxPoint x="290" y="140" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="890" y="510" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="465" id="465">
+      <mxCell style="link" parent="252" source="335" target="461" edge="1">
+        <mxGeometry y="140" width="100" height="100" as="geometry">
+          <mxPoint y="240" as="sourcePoint" />
+          <mxPoint x="100" y="140" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="460" y="630" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="466" id="466">
+      <mxCell style="link" parent="252" source="461" target="445" edge="1">
+        <mxGeometry x="190" y="140" width="100" height="100" as="geometry">
+          <mxPoint x="190" y="240" as="sourcePoint" />
+          <mxPoint x="290" y="140" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="467" id="467">
+      <mxCell style="link" parent="252" source="461" target="447" edge="1">
+        <mxGeometry x="190" y="140" width="100" height="100" as="geometry">
+          <mxPoint x="190" y="240" as="sourcePoint" />
+          <mxPoint x="290" y="140" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Zubau Fernwärme-anschlüsse" Note="" Equation="[Aktuelle Investitionen in Fernwärme]/[Aktuelle Kosten Fernwärmeanschluss]" Units="Anlagen / Year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="482" id="482">
+      <mxCell style="variable" parent="252" vertex="1">
+        <mxGeometry x="180" y="515" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Ghost Source="483" oldId="488" name="Inflationsrate" id="488">
+      <mxCell style="variable;opacity=30;" parent="252" vertex="1">
+        <mxGeometry x="60" y="800" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Ghost>
+    <Stock name="Aktuelle Kosten Fernwärmeanschluss" Note="" InitialValue="[Kosten Fernwärmeanschluss 2020]" StockMode="Store" Delay="10" Volume="100" NonNegative="false" Units="Euro/Anlagen" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="492" id="492">
+      <mxCell style="stock" parent="252" vertex="1">
+        <mxGeometry x="150" y="660" width="180" height="50" as="geometry" />
+      </mxCell>
+    </Stock>
+    <Link name="Link" Note="" BiDirectional="false" oldId="493" id="493">
+      <mxCell style="link" parent="252" source="456" target="492" edge="1">
+        <mxGeometry y="370" width="100" height="100" as="geometry">
+          <mxPoint y="470" as="sourcePoint" />
+          <mxPoint x="100" y="370" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="497" id="497">
+      <mxCell style="link" parent="252" source="492" target="482" edge="1">
+        <mxGeometry y="370" width="100" height="100" as="geometry">
+          <mxPoint y="470" as="sourcePoint" />
+          <mxPoint x="100" y="370" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="498" id="498">
+      <mxCell style="link" parent="252" source="445" target="482" edge="1">
+        <mxGeometry y="210" width="100" height="100" as="geometry">
+          <mxPoint y="310" as="sourcePoint" />
+          <mxPoint x="100" y="210" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Flow name="Preissteigerung" Note="" FlowRate="[Aktuelle Kosten Fernwärmeanschluss]*[Inflationsrate]/100" OnlyPositive="true" TimeIndependent="false" Units="Euro /  (year * Anlagen)" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" oldId="494" id="494">
+      <mxCell style="flow" parent="252" target="492" edge="1">
+        <mxGeometry x="-1729.78" y="-1480" width="100" height="100" as="geometry">
+          <mxPoint x="230.22000000000003" y="840" as="sourcePoint" />
+          <mxPoint x="-1729.78" y="-1380" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Flow>
+    <Link name="Link" Note="" BiDirectional="false" oldId="495" id="495">
+      <mxCell style="link" parent="252" source="488" target="494" edge="1">
+        <mxGeometry x="-1800" y="-1480" width="100" height="100" as="geometry">
+          <mxPoint x="-1800" y="-1380" as="sourcePoint" />
+          <mxPoint x="-1700" y="-1480" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Stock name="Aktuelle Kosten erneuerbare Wärmeversorgung" Note="" InitialValue="[ Kosten erneuerbare Wärmeversorgungs-anlage 2020]" StockMode="Store" Delay="10" Volume="100" NonNegative="false" Units="Euro/Anlagen" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="503" id="503">
+      <mxCell style="stock" parent="252" vertex="1">
+        <mxGeometry x="180" y="170" width="160" height="60" as="geometry" />
+      </mxCell>
+    </Stock>
+    <Ghost Source="483" oldId="505" name="Inflationsrate" id="505">
+      <mxCell style="variable;opacity=30;" parent="252" vertex="1">
+        <mxGeometry x="80" y="40" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Ghost>
+    <Variable name=" Kosten erneuerbare Wärmeversorgungs-anlage 2020" Note="&lt;div&gt;Durchschnittliche Kosten einer Wärmepumpe: 19.600€&lt;/div&gt;&lt;div&gt;https://www.zeit.de/wirtschaft/2023-05/waermepumpe-kosten-stromverbrauch-daemmung-umfrage&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Kosten Stromspeicher:&lt;/div&gt;&lt;div&gt;500-1500€/kWh + Photovoltaikanlage&lt;br&gt;&lt;/div&gt;&lt;div&gt;https://www.heizung.de/photovoltaik/wissen/stromspeicher-kosten-und-foerdermittel.html&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" Equation="19000" Units="Euro/Anlagen" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="509" id="509">
+      <mxCell style="variable" parent="252" vertex="1">
+        <mxGeometry x="20" y="160" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="510" id="510">
+      <mxCell style="link" parent="252" source="509" target="503" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Flow name="Preissteigerung" Note="" FlowRate="[Aktuelle Kosten erneuerbare Wärmeversorgung]*[Inflationsrate]/100" OnlyPositive="true" TimeIndependent="false" Units="Euro /  (year * Anlagen)" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" oldId="504" id="504">
+      <mxCell style="flow" parent="252" target="503" edge="1">
+        <mxGeometry x="-2730.54" y="-2030" width="100" height="100" as="geometry">
+          <mxPoint x="250" y="60" as="sourcePoint" />
+          <mxPoint x="-2730.54" y="-1930" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Flow>
+    <Link name="Link" Note="" BiDirectional="false" oldId="507" id="507">
+      <mxCell style="link" parent="252" source="505" target="504" edge="1">
+        <mxGeometry x="-1800" y="-1860" width="100" height="100" as="geometry">
+          <mxPoint x="-1800" y="-1760" as="sourcePoint" />
+          <mxPoint x="-1700" y="-1860" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Zubau erneuerbare Wärmeversorgung" Note="" Equation="[Aktuelle Investitionen in erneuerbare Wärmeversorgung]/[Aktuelle Kosten erneuerbare Wärmeversorgung]" Units="Anlagen / Year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="511" id="511">
+      <mxCell style="variable" parent="252" vertex="1">
+        <mxGeometry x="180" y="290" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="512" id="512">
+      <mxCell style="link" parent="252" source="503" target="511" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="513" id="513">
+      <mxCell style="link" parent="252" source="447" target="511" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Investitionen Gebäudehülle privat" Note="in Millonen Euro pro Jahr&lt;br&gt;" Equation="500" Units="Euro /  year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="true" SliderMax="500" SliderMin="0" SliderStep="10" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="514" id="514">
+      <mxCell style="variable" parent="252" vertex="1">
+        <mxGeometry x="1235" y="884.9999999999995" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="Investitionen Gebäudehülle öffentlich" Note="in Millonen Euro pro Jahr&lt;br&gt;" Equation="100" Units="Euro /  year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="true" SliderMax="100" SliderMin="0" SliderStep="10" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="515" id="515">
+      <mxCell style="variable" parent="252" vertex="1">
+        <mxGeometry x="1425" y="885" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="516" id="516">
+      <mxCell style="link" parent="252" source="515" target="331" edge="1">
+        <mxGeometry x="-5" y="55" width="100" height="100" as="geometry">
+          <mxPoint x="-5" y="155" as="sourcePoint" />
+          <mxPoint x="95" y="55" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="517" id="517">
+      <mxCell style="link" parent="252" source="514" target="332" edge="1">
+        <mxGeometry x="-5" y="55" width="100" height="100" as="geometry">
+          <mxPoint x="-5" y="155" as="sourcePoint" />
+          <mxPoint x="95" y="55" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Investitionen erneuerbare Wärmeversorgung privat" Note="in Millonen Euro pro Jahr&lt;br&gt;" Equation="500" Units="Euro /  year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="true" SliderMax="500" SliderMin="0" SliderStep="10" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="518" id="518">
+      <mxCell style="variable" parent="252" vertex="1">
+        <mxGeometry x="540" y="910" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="Investitionen erneuerbare Wärmeversorgung öffentlich" Note="in Millonen Euro pro Jahr&lt;br&gt;" Equation="100" Units="Euro /  year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="true" SliderMax="100" SliderMin="0" SliderStep="10" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="519" id="519">
+      <mxCell style="variable" parent="252" vertex="1">
+        <mxGeometry x="770" y="910" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="520" id="520">
+      <mxCell style="link" parent="252" source="519" target="336" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="522" id="522">
+      <mxCell style="link" parent="252" source="518" target="335" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Folder name="Ökonomische Gentrifizierung" Note="" Type="None" Solver="{&quot;enabled&quot;:false,&quot;algorithm&quot;:&quot;RK1&quot;,&quot;timeStep&quot;:1}" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" AgentBase="" oldId="457" id="457">
+      <mxCell style="folder;image=None;shape=rectangle;" parent="1" vertex="1">
+        <mxGeometry x="2810" y="130" width="1060" height="580" as="geometry">
+          <mxRectangle x="3100" y="280" width="260" height="20" as="alternateBounds" />
+        </mxGeometry>
+      </mxCell>
+    </Folder>
+    <Variable name="Anteil Wohnkosten an Verfügbarem Einkommen" Note="" Equation="[Wohnkosten]*[Durchschnittliche Wohnfläche pro Einwohner]/[Verfügbares Einkommen der Bewohner*innen]" Units="1 / (person)" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="247" id="247">
+      <mxCell style="variable;shape=ellipse;perimeter=ellipsePerimeter;fillColor=#B3E2CD;strokeColor=#000000;" parent="457" vertex="1">
+        <mxGeometry x="20" y="440" width="240" height="120" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="Pro-Kopf-Einkommen 2020" Note="https://de.statista.com/statistik/daten/studie/255172/umfrage/verfuegbares-einkommen-privater-haushalte-je-einwohner-in-hamburg/" Equation="25285" Units="Euro /  year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="282" id="282">
+      <mxCell style="variable" parent="457" vertex="1">
+        <mxGeometry x="610" y="360" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="Umzugsentscheidungen" Note="" Equation="" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="292" id="292">
+      <mxCell style="variable;shape=ellipse;perimeter=ellipsePerimeter;fillColor=#B3E2CD;strokeColor=#000000;" parent="457" vertex="1">
+        <mxGeometry x="110" y="190" width="200" height="80" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="Tatsächliche Umzüge" Note="" Equation="" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="293" id="293">
+      <mxCell style="variable;shape=ellipse;perimeter=ellipsePerimeter;fillColor=#B3E2CD;strokeColor=#000000;" parent="457" vertex="1">
+        <mxGeometry x="480" y="140" width="200" height="80" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="299" id="299">
+      <mxCell style="link" parent="457" source="292" target="293" edge="1">
+        <mxGeometry x="-2130" y="-180" width="100" height="100" as="geometry">
+          <mxPoint x="-2130" y="-80" as="sourcePoint" />
+          <mxPoint x="-2030" y="-180" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="300" id="300">
+      <mxCell style="link" parent="457" source="247" target="292" edge="1">
+        <mxGeometry x="-2130" y="-180" width="100" height="100" as="geometry">
+          <mxPoint x="-2130" y="-80" as="sourcePoint" />
+          <mxPoint x="-2030" y="-180" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Stock name="Verfügbares Einkommen der Bewohner*innen" Note="" InitialValue="[Pro-Kopf-Einkommen 2020]" StockMode="Store" Delay="10" Volume="100" NonNegative="false" Units="Euro /  year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="349" id="349">
+      <mxCell style="stock" parent="457" vertex="1">
+        <mxGeometry x="580" y="470" width="180" height="70" as="geometry" />
+      </mxCell>
+    </Stock>
+    <Flow name="Zuwachs an verfügbarem Einkommen" Note="" FlowRate="[Verfügbares Einkommen der Bewohner*innen]*[Änderung Reallohn]" OnlyPositive="false" TimeIndependent="false" Units="Euro /  (year * year)" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" oldId="350" id="350">
+      <mxCell style="flow;startArrow=block;startFill=0;" parent="457" target="349" edge="1">
+        <mxGeometry x="-2110" y="-180.44" width="100" height="100" as="geometry">
+          <mxPoint x="980" y="504.55999999999983" as="sourcePoint" />
+          <mxPoint x="-2110" y="-80.44" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Flow>
+    <Link name="Link" Note="" BiDirectional="false" oldId="353" id="353">
+      <mxCell style="link" parent="457" source="282" target="349" edge="1">
+        <mxGeometry x="-2130" y="-180" width="100" height="100" as="geometry">
+          <mxPoint x="-2130" y="-80" as="sourcePoint" />
+          <mxPoint x="-2030" y="-180" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="354" id="354">
+      <mxCell style="link" parent="457" source="349" target="247" edge="1">
+        <mxGeometry x="-2130" y="-180" width="100" height="100" as="geometry">
+          <mxPoint x="-2130" y="-80" as="sourcePoint" />
+          <mxPoint x="-2030" y="-180" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Ghost Source="483" oldId="553" name="Inflationsrate" id="553">
+      <mxCell style="variable;opacity=30;" parent="457" vertex="1">
+        <mxGeometry x="750" y="260" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Ghost>
+    <Variable name="Änderung Nominallohn" Note="[%]" Equation="-0.5" Units="1 / year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="true" SliderMax="15" SliderMin="-5" SliderStep="0.1" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="555" id="555">
+      <mxCell style="variable" parent="457" vertex="1">
+        <mxGeometry x="910" y="260" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="Änderung Reallohn" Note="" Equation="([Änderung Nominallohn]-[Inflationsrate])/100" Units="1 / year" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="556" id="556">
+      <mxCell style="variable" parent="457" vertex="1">
+        <mxGeometry x="820" y="360" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="557" id="557">
+      <mxCell style="link" parent="457" source="553" target="556" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="558" id="558">
+      <mxCell style="link" parent="457" source="555" target="556" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="559" id="559">
+      <mxCell style="link" parent="457" source="556" target="350" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="527" id="527">
+      <mxCell style="link" parent="1" source="188" target="325" edge="1">
+        <mxGeometry x="-140" y="-190" width="100" height="100" as="geometry">
+          <mxPoint x="-140" y="-90" as="sourcePoint" />
+          <mxPoint x="-40" y="-190" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="561" id="561">
+      <mxCell style="link" parent="1" source="511" target="403" edge="1">
+        <mxGeometry x="-140" y="-190" width="100" height="100" as="geometry">
+          <mxPoint x="-140" y="-90" as="sourcePoint" />
+          <mxPoint x="-40" y="-190" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Picture name="" Note="" Image="https://www.connectedurbantwins.de/app/uploads/2022/08/logo.png" FlipHorizontal="false" FlipVertical="false" LabelPosition="Bottom" oldId="562" id="562">
+      <mxCell style="picture;image=https://www.connectedurbantwins.de/app/uploads/2022/08/logo.png;imageFlipV=0;imageFlipH=0;shape=image;" parent="1" vertex="1">
+        <mxGeometry x="3710" y="2260" width="1060" height="430" as="geometry" />
+      </mxCell>
+    </Picture>
+    <Display name="Entkoppelung" Note="" Type="Time Series" xAxis="Time (%u)" yAxis="" yAxis2="Tonnen/Person und Jahr" showMarkers="false" showLines="true" showArea="false" Primitives="247" Primitives2="564" AutoAddPrimitives="false" ScatterplotOrder="X Primitive, Y Primitive" Image="Display" FlipHorizontal="false" FlipVertical="false" LabelPosition="Bottom" oldId="563" legendPosition="Automatic" yAxisMin2="0" yAxisMax2="1.5" yAxisMin="0" yAxisMax="1" id="563">
+      <mxCell style="display" parent="1" vertex="1" visible="0">
+        <mxGeometry x="10" y="10" width="64" height="64" as="geometry" />
+      </mxCell>
+    </Display>
+    <Variable name="CO2-Emissionen aus Heizen pro Kopf" Note="" Equation="[CO2-Emissionen aus Heizenergiebedarf]/[Einwohnerprognose Statistikamt Nord]" Units="Tonnes / (year * person)" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="564" id="564">
+      <mxCell style="variable" parent="1" vertex="1">
+        <mxGeometry x="2430" y="1530" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" oldId="565" id="565">
+      <mxCell style="link" parent="1" source="309" target="564" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="566" id="566">
+      <mxCell style="link" parent="1" source="211" target="564" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="2860" y="1530" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" oldId="569" id="569">
+      <mxCell style="link" parent="1" source="188" target="567" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Display name="CO2 Emissionen" Note="" Type="Time Series" xAxis="Time (%u)" yAxis="Tonnen pro m2 und Jahr" yAxis2="" showMarkers="false" showLines="true" showArea="false" Primitives="567" Primitives2="" AutoAddPrimitives="false" ScatterplotOrder="X Primitive, Y Primitive" Image="Display" FlipHorizontal="false" FlipVertical="false" LabelPosition="Bottom" oldId="570" legendPosition="Automatic" id="570">
+      <mxCell style="display" parent="1" vertex="1" visible="0">
+        <mxGeometry x="10" y="10" width="64" height="64" as="geometry" />
+      </mxCell>
+    </Display>
+  </root>
+</InsightMakerModel>
