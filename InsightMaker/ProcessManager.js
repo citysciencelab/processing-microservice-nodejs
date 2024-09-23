@@ -1,8 +1,8 @@
 import { loadInsightMaker } from "simulation";
 import { readFileSync } from 'node:fs';
 
-import {CCMCC_OUTPUTS} from './models/CCmCCMetadata.js';
-import {RE3_OUTPUTS} from './models/RE3Metadata.js';
+import {CCMCC_OUTPUTS} from './models/CCmCC/Metadata.js';
+import {RE3_OUTPUTS} from './models/RE3/Metadata.js';
 
 // Function to select a variable by name
 function byName(targetName) {
@@ -12,7 +12,7 @@ function byName(targetName) {
   }
 
 // Load the model
-const modelText = readFileSync('InsightMaker/models/RE3.InsightMaker', 'utf8');
+const modelText = readFileSync('InsightMaker/models/RE3/Model.InsightMaker', 'utf8');
 
 // Output parameters
 const outputParameters = RE3_OUTPUTS
@@ -51,13 +51,23 @@ async function simulateModelGeneric(inputParameters, outputParameters, modelText
         }
     }
 
-    console.log(outputVariables);
+    //console.log(outputVariables);
 
     //Simulate the model
     let results = model.simulate();
 
+    //Only output the results
+    results = results.table(outputVariables)
+
+    // This is where the results would be appended to the GeoJSON
+    const hamburgGeojson = JSON.parse(readFileSync('InsightMaker/models/RE3/Hamburg.geojson', 'utf8'));
+    hamburgGeojson.features.forEach(feature => {
+        feature.properties.result = results
+    });
+    
+
     //Return the results
-    return results.table(outputVariables)
+    return hamburgGeojson
 
 }
 
